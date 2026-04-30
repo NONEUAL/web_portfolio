@@ -65,13 +65,53 @@
             height: 100%;
             transition: transform 0.3s ease, background-color 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
         }
         .bento-card:hover {
             background-color: var(--card-bg-hover);
+            transform: translateY(-5px);
         }
 
         h2, h3, h5 { color: var(--text-primary); font-weight: 700; }
         p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Mini Project List inside Bento */
+        .mini-project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .mini-project-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .mini-project-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--card-item-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--accent-primary);
+        }
+        .mini-project-info h6 {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+        .mini-project-info span {
+            font-size: 0.7rem;
+            color: var(--text-darker-muted);
+        }
 
         /* Profile Image */
         .profile-img {
@@ -86,8 +126,6 @@
         .student-tag {
             color: var(--accent-primary);
             font-weight: 600;
-            border-right: 2px solid var(--accent-primary);
-            padding-right: 5px;
         }
 
         /* Education Items */
@@ -102,102 +140,120 @@
             color: var(--text-darker-muted);
         }
 
-        /* Icons */
         .social-icon {
             font-size: 1.5rem;
             color: var(--text-muted);
             margin: 0 10px;
             transition: 0.3s;
         }
-        .social-icon:hover {
-            color: var(--accent-primary);
-        }
+        .social-icon:hover { color: var(--accent-primary); }
 
-        .resume-btn {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
+        .resume-link-card {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Navbar (Same as Projects) -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark py-3">
         <div class="container">
-            <a class="navbar-brand" href="#">gab/.</a>
+            <a class="navbar-brand" href="index.html">gab/.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-folder me-1"></i> Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-file-earmark-person me-1"></i> Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html"><i class="bi bi-folder me-1"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Resume.pdf" download><i class="bi bi-file-earmark-person me-1"></i> Resume</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Grid -->
     <div class="container my-5">
         <div class="row g-4">
             
             <!-- Left Column -->
             <div class="col-lg-3 d-flex flex-column gap-4">
-                <!-- Personal Portfolio Title -->
                 <div class="bento-card">
-                    <h2 class="mb-0">Personal Portfolio</h2>
+                    <h3 class="mb-0">Personal Portfolio</h3>
                 </div>
-                <!-- About Me -->
                 <div class="bento-card flex-grow-1">
                     <h5 class="mb-3">About Me</h5>
                     <p>I am Gabriel Velasquez, 19 years old, from Amadeo, Cavite. I am currently a 2nd-year BSIT student at Olivarez College Tagaytay.</p>
-                    <p>Interests: Volleyball, Online Games, Anime, Traveling.</p>
                 </div>
-                <!-- Resume Card -->
-                <div class="bento-card text-center py-4">
-                    <button class="resume-btn">
-                        <h5 class="mb-2">My Resume</h5>
-                        <i class="bi bi-download fs-4"></i>
-                    </button>
-                </div>
+                <!-- Clickable Resume -->
+                <a href="Resume.pdf" download class="bento-card resume-link-card py-4">
+                    <h5 class="mb-2">My Resume</h5>
+                    <i class="bi bi-download fs-4 text-primary"></i>
+                    <p class="mb-0 mt-2 small text-muted">Download PDF</p>
+                </a>
             </div>
 
             <!-- Middle Column -->
             <div class="col-lg-3 d-flex flex-column gap-4">
-                <!-- Profile Section -->
                 <div class="bento-card text-center d-flex flex-column align-items-center justify-content-center py-5">
                     <h3>Gabriel Velasquez</h3>
                     <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img my-3">
                     <div class="student-tag">Student</div>
                 </div>
-                <!-- Contact Me -->
                 <div class="bento-card">
                     <h5 class="mb-4 text-center">Contact Me</h5>
                     <div class="d-flex justify-content-center">
                         <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project Column -->
+            <!-- Project Column (Now with Preview List) -->
             <div class="col-lg-3">
-                <div class="bento-card">
+                <a href="project.html" class="bento-card">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="mb-0">My Projects</h5>
-                        <i class="bi bi-chevron-right text-primary"></i>
+                        <h5 class="mb-0">Projects</h5>
+                        <i class="bi bi-arrow-up-right-circle text-primary"></i>
                     </div>
-                    <p>Wala pa ang hanap mo | Coming Soon |</p>
-                    <!-- Placeholder for project list -->
-                    <div class="mt-4 text-center opacity-25">
-                        <i class="bi bi-code-slash display-1"></i>
+                    
+                    <div class="mini-project-list">
+                        <!-- Project Item 1 -->
+                        <div class="mini-project-item">
+                            <div class="mini-project-info">
+                                <h6>N/A</h6>
+                                <span>Final Hackaton Exam</span>
+                            </div>
+                        </div>
+                        <!-- Project Item 2 -->
+                        <div class="mini-project-item">
+                            <div class="mini-project-info">
+                                <h6>N/A</h6>
+                                <span>Final Hackaton 1</span>
+                            </div>
+                        </div>
+                        <!-- Project Item 3 -->
+                        <div class="mini-project-item">
+                            <div class="mini-project-info">
+                                <h6>N/A</h6>
+                                <span>Final Hackaton 2</span>
+                            </div>
+                        </div>
+                        <!-- Project Item 4 -->
+                        <div class="mini-project-item">
+                            <div class="mini-project-info">
+                                <h6>N/A</h6>
+                                <span>Midterm Hackaton 1</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="mt-auto pt-3">
+                        <p class="small text-primary mb-0">View all projects <i class="bi bi-chevron-right"></i></p>
+                    </div>
+                </a>
             </div>
 
             <!-- Right Column: Education -->
@@ -207,27 +263,19 @@
                         <h5 class="mb-0">My Education</h5>
                         <i class="bi bi-mortarboard-fill text-success"></i>
                     </div>
-
                     <div class="edu-item">
-                        <h6 class="mb-1 text-primary">Olivarez College Tagaytay</h6>
+                        <h6 class="mb-1 text-primary">Olivarez College</h6>
                         <p class="mb-1 small">Bachelor of Science in Information Technology</p>
-                        <div class="edu-date">Aug 2024 - Present</div>
+                        <div class="edu-date">2024 - Present</div>
                     </div>
-
-                    <div class="edu-item">
+                    <div class="edu-item">  
                         <h6 class="mb-1">Halang Banaybanay Integrated School</h6>
                         <p class="mb-1 small">Accountancy, Business and Management</p>
-                        <div class="edu-date">Mar 2021 - May 2024</div>
+                        <div class="edu-date">2021 - 2024</div>
                     </div>
-
                     <div class="edu-item">
                         <h6 class="mb-1">E.B Magalona National High School</h6>
                         <div class="edu-date">2016 - 2021</div>
-                    </div>
-
-                    <div class="edu-item">
-                        <h6 class="mb-1">Alicante Elementary School</h6>
-                        <div class="edu-date">2012 - 2016</div>
                     </div>
                 </div>
             </div>
@@ -235,7 +283,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
